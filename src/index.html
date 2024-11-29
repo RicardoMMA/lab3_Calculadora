@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Aritméticas, Lógicas y Comparativas</title>
+</head>
+<body>
+
+    <label>Número 1:</label>
+    <input type="number" id="numero1">
+    <br><br>
+    <label>Número 2:</label>
+    <input type="number" id="numero2">
+    <br><br>
+
+    <label>Seleccione una operación:</label>
+    <select id="operacion">
+        <optgroup label="Aritméticas">
+            <option value="sumar">Suma</option>
+            <option value="restar">Resta</option>
+            <option value="multiplicar">Multiplicación</option>
+            <option value="dividir">División</option>
+        </optgroup>
+        <optgroup label="Lógicas">
+            <option value="and">AND</option>
+            <option value="or">OR</option>
+        </optgroup>
+        <optgroup label="Comparativas">
+            <option value="igual">Igual a</option>
+            <option value="mayor">Mayor que</option>
+            <option value="menor">Menor que</option>
+        </optgroup>
+    </select>
+    <br><br>
+
+    <button type="button" onclick="calcular()">Calcular</button>
+    <br><br>
+
+    <label>Resultado:</label>
+    <input type="text" id="resultado" readonly>
+
+    <script>
+        function calcular() {
+            const num1 = parseFloat(document.getElementById("numero1").value);
+            const num2 = parseFloat(document.getElementById("numero2").value);
+            const operacion = document.getElementById("operacion").value;
+            let resultado;
+
+            switch (operacion) {
+                case "sumar":
+                    resultado = num1 + num2;
+                    break;
+                case "restar":
+                    resultado = num1 - num2;
+                    break;
+                case "multiplicar":
+                    resultado = num1 * num2;
+                    break;
+                case "dividir":
+                    resultado = num2 !== 0 ? num1 / num2 : "Error: División por cero";
+                    break;
+                case "and":
+                    resultado = Boolean(num1) && Boolean(num2);
+                    break;
+                case "or":
+                    resultado = Boolean(num1) || Boolean(num2);
+                    break;
+                case "igual":
+                    resultado = num1 === num2;
+                    break;
+                case "mayor":
+                    resultado = num1 > num2;
+                    break;
+                case "menor":
+                    resultado = num1 < num2;
+                    break;
+                default:
+                    resultado = "Operación no válida";
+            }
+
+            document.getElementById("resultado").value = resultado;
+        }
+    </script>
+
+</body>
+</html>
